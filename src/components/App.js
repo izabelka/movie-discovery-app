@@ -43,6 +43,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
+  background-color: #000;
 `;
 
 const MoviesWrapper = styled.div`
