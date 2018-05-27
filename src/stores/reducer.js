@@ -1,18 +1,13 @@
 import {
-  FOCUS_ON_CREATE_ROOM_INPUT,
+  SET_POPULAR_MOVIES,
 } from './actionTypes';
 
 export default (state = {}, action) => {
  switch (action.type) {
-  case 'SIMPLE_ACTION':
-   return {
-    ...state,
-    dupa: action.payload,
-   }
-  case FOCUS_ON_CREATE_ROOM_INPUT:
+  case SET_POPULAR_MOVIES:
    return {
      ...state,
-     createRoomInputFocused: action.createRoomInputFocused,
+     popularMovies: action.popularMovies,
    }
   default:
    return state

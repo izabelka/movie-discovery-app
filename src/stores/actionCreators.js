@@ -1,18 +1,21 @@
 import {
-  FOCUS_ON_CREATE_ROOM_INPUT,
+  SET_POPULAR_MOVIES,
 } from './actionTypes';
+import {
+  apiGetPopularMovies,
+} from '../api.js';
 
-export const simpleAction = () => dispatch => {
- dispatch({
-  type: 'SIMPLE_ACTION',
-  payload: 'result_of_simple_action'
- })
+export function getPopularMovies() {
+  return async (dispatch) => {
+    let popularMovies = await apiGetPopularMovies();
+
+    dispatch(setPopularMovies(popularMovies));
+  }
 }
 
-
-export const focusOnCreateRoomInput = (bool) => {
+export const setPopularMovies = (moviesList) => {
   return {
-    type: FOCUS_ON_CREATE_ROOM_INPUT,
-    createRoomInputFocused: bool,
+    type: SET_POPULAR_MOVIES,
+    popularMovies: moviesList,
   };
 }

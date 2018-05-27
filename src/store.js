@@ -6,7 +6,7 @@ export default function configureStore(initialState={}) {
  return createStore(
   reducer,
   {
-    createRoomInputFocused: false,
+    popularMovies: [],
   },
   applyMiddleware(thunk)
  );

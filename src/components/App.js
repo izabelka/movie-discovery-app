@@ -3,25 +3,36 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import '../assets/css/reset.css';
 import {
-  simpleAction,
-  focusOnCreateRoomInput,
+  getPopularMovies,
 } from '../stores/actionCreators';
+import Movie from './Movie';
+
 class App extends Component {
 
-  simpleAction = () => {
-    this.props.simpleAction();
-    this.props.focusOnCreateRoomInput(!this.props.isRoomInputFocused);
+  componentWillMount = () => {
+    this.props.getPopularMovies();
+  }
+
+  renderMovies = () => {
+    return (
+      this.props.popularMovies.map((movie, index) => (
+        <Movie
+          key={movie.id}
+          title={movie.title}
+          voteAverage={movie.vote_average}
+          posterPath={movie.poster_path}
+          overview={movie.overview}
+          position={index+1} />
+      ))
+    );
   }
 
   render() {
     return (
       <Wrapper>
-        {/* <button onClick={this.simpleAction}>Test redux action</button> */}
-        <pre>
-          {
-            JSON.stringify(this.props)
-          }
-        </pre>
+        <MoviesWrapper>
+          {this.renderMovies()}
+        </MoviesWrapper>
       </Wrapper>
     );
   }
@@ -30,16 +41,26 @@ class App extends Component {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
+`;
+
+const MoviesWrapper = styled.div`
+  width: 60%;
+  padding: 60px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const mapStateToProps = state => ({
   //...state,
- isRoomInputFocused: state.createRoomInputFocused,
+ popularMovies: state.popularMovies,
 });
 
 const mapDispatchToProps = dispatch => ({
- simpleAction: () => dispatch(simpleAction()),
- focusOnCreateRoomInput: (bool) => dispatch(focusOnCreateRoomInput(bool)),
+ getPopularMovies: () => dispatch(getPopularMovies()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
