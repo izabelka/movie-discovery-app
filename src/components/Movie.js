@@ -11,6 +11,7 @@ class Movie extends Component {
       overview,
       position,
     } = this.props;
+    overview = overview.length > 300 ? overview.slice(0, 300) + '…' : overview;
     return (
       <Wrapper>
         <PositionMarker>
@@ -25,7 +26,7 @@ class Movie extends Component {
             {title}
           </Title>
           <VoteAverage>
-            {voteAverage}
+            {`⭐️ ${voteAverage}`}
           </VoteAverage>
           <Description>
             {overview}
@@ -85,11 +86,15 @@ const MovieInfo = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: 600;
+  margin-bottom: 10px;
 `;
 
-const VoteAverage = styled.span``;
+const VoteAverage = styled.span`
+  font-size: 1.2em;
+  margin-bottom: 14px;
+`;
 
 const Description = styled.p`
   line-height: 1.4em;

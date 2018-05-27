@@ -44,6 +44,7 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100vw;
   background-color: #000;
+  font-family: Helvetica;
 `;
 
 const MoviesWrapper = styled.div`
