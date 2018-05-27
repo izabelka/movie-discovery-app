@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {
   simpleAction,
   focusOnCreateRoomInput,
-} from './stores/actionCreators';
+} from '../stores/actionCreators';
 class App extends Component {
 
   simpleAction = () => {
