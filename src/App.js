@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+import styled from 'styled-components';
 import {
   simpleAction,
   focusOnCreateRoomInput,
-} from './stores/actionCreators'
+} from './stores/actionCreators';
 class App extends Component {
 
   simpleAction = () => {
@@ -14,17 +14,22 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         {/* <button onClick={this.simpleAction}>Test redux action</button> */}
         <pre>
           {
             JSON.stringify(this.props)
           }
         </pre>
-      </div>
+      </Wrapper>
     );
   }
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const mapStateToProps = state => ({
   //...state,
