@@ -14,14 +14,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-
+      <div>
         {/* <button onClick={this.simpleAction}>Test redux action</button> */}
         <pre>
- {
-  JSON.stringify(this.props)
- }
-</pre>
+          {
+            JSON.stringify(this.props)
+          }
+        </pre>
       </div>
     );
   }
