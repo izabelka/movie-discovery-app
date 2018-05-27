@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import {
+  selectMovie,
+  updateAppState,
+} from '../stores/actionCreators';
 
 class Movie extends Component {
+
+  onMovieClick = () => {
+    this.props.selectMovie(this.props.movieId);
+    this.props.updateAppState('movie-details')
+  }
+
   render() {
     let {
       title,
@@ -13,7 +23,8 @@ class Movie extends Component {
     } = this.props;
     overview = overview.length > 300 ? overview.slice(0, 300) + '…' : overview;
     return (
-      <Wrapper>
+      <Wrapper
+        onClick={this.onMovieClick}>
         <PositionMarker>
           <Position>
             {position}
@@ -69,7 +80,7 @@ const PositionMarker = styled.div`
 
 const Position = styled.span`
   color: #000;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 2em;
 `;
 
@@ -102,10 +113,11 @@ const Description = styled.p`
 `;
 
 const mapStateToProps = state => ({
-  //...state,
 });
 
 const mapDispatchToProps = dispatch => ({
+ selectMovie: (movieId) => dispatch(selectMovie(movieId)),
+ updateAppState: (appState) => dispatch(updateAppState(appState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

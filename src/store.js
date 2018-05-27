@@ -6,7 +6,9 @@ export default function configureStore(initialState={}) {
  return createStore(
   reducer,
   {
+    appState: 'initial',
     popularMovies: [],
+    selectedMovie: null,
   },
   applyMiddleware(thunk)
  );
