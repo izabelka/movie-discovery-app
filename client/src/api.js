@@ -2,6 +2,9 @@ import request from 'superagent';
 
 const REQUEST_TIMEOUT = 10000;
 
+// get popular movies
+// required: nothing
+// result: popular movies array
 export async function apiGetPopularMovies() {
   let url = '/api/popular-movies';
   return new Promise ((resolve, reject) => {
@@ -29,6 +32,9 @@ export async function apiGetPopularMovies() {
   });
 }
 
+// get movie details
+// required: movieId
+// result: movie details object
 export async function apiGetMovieDetails(movieId) {
   let url = `/api/movie-details/${movieId}`;
   return new Promise ((resolve, reject) => {
@@ -56,6 +62,9 @@ export async function apiGetMovieDetails(movieId) {
   });
 }
 
+// get movies that matches query input
+// required: movie (query string)
+// result: results (movie titles) array
 export async function apiSearchMovies(movie) {
   let url = `/api/search/${movie}`;
   return new Promise ((resolve, reject) => {
