@@ -5,6 +5,7 @@ import {
 } from './actionTypes';
 import {
   apiGetPopularMovies,
+  apiGetMovieDetails,
 } from '../api.js';
 
 export function getPopularMovies() {
@@ -12,6 +13,14 @@ export function getPopularMovies() {
     let popularMovies = await apiGetPopularMovies();
 
     dispatch(setPopularMovies(popularMovies));
+  }
+}
+
+export function getMovieDetails(movieId) {
+  return async (dispatch) => {
+    let movieDetails = await apiGetMovieDetails(movieId);
+
+    dispatch(selectMovie(movieDetails));
   }
 }
 
@@ -29,9 +38,9 @@ export const updateAppState = (appState) => {
   };
 }
 
-export const selectMovie = (movieId) => {
+export const selectMovie = (movieDetails) => {
   return {
     type: SELECT_MOVIE,
-    selectedMovie: movieId,
+    selectedMovie: movieDetails,
   };
 }

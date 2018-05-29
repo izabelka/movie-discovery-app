@@ -25,8 +25,7 @@ class App extends Component {
       );
       case 'movie-details':
         return (
-          <MovieDetails
-            movie={this.props.selectedMovie}/>
+          <MovieDetails />
         );
       default:
         return (
@@ -65,12 +64,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: calc(100vw - 2 * 34px);
+  padding: 60px 34px;
 `;
 
 const MoviesWrapper = styled.div`
   width: 60%;
-  padding: 60px 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +80,6 @@ const mapStateToProps = state => ({
   //...state,
   appState: state.appState,
   popularMovies: state.popularMovies,
-  selectedMovie: state.selectedMovie,
 });
 
 const mapDispatchToProps = dispatch => ({

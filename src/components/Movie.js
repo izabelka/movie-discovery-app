@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  selectMovie,
+  getMovieDetails,
   updateAppState,
 } from '../stores/actionCreators';
 
 class Movie extends Component {
 
   onMovieClick = () => {
-    this.props.selectMovie(this.props.movieId);
-    this.props.updateAppState('movie-details')
+    this.props.getMovieDetails(this.props.movieId);
+    this.props.updateAppState('movie-details');
   }
 
   render() {
@@ -37,7 +37,7 @@ class Movie extends Component {
             {title}
           </Title>
           <VoteAverage>
-            {`⭐️ ${voteAverage}`}
+            {`⭐️${voteAverage}`}
           </VoteAverage>
           <Description>
             {overview}
@@ -58,6 +58,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   color: #fff;
   position: relative;
+  cursor: pointer;
 
   &:not(:last-of-type){
     margin-bottom: 22px;
@@ -104,6 +105,8 @@ const Title = styled.h2`
 
 const VoteAverage = styled.span`
   font-size: 1.2em;
+  line-height: 1.2em;
+  vertical-align: middle;
   margin-bottom: 14px;
 `;
 
@@ -116,7 +119,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
- selectMovie: (movieId) => dispatch(selectMovie(movieId)),
+ getMovieDetails: (movieId) => dispatch(getMovieDetails(movieId)),
  updateAppState: (appState) => dispatch(updateAppState(appState)),
 });
 
