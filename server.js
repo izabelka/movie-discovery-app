@@ -20,9 +20,7 @@ app.get('/api/popular-movies', (req, res) => {
     }
   })
 });
-// router.get('/check/:domain/:room', softCheckAuth, async (req, res) => {
-//   let domainName = req.params.domain,
-//       roomName = req.params.room;
+
 app.get('/api/movie-details/:movieId', (req, res) => {
   let movieId = req.params.movieId;
   let url = `${BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`;
@@ -30,6 +28,17 @@ app.get('/api/movie-details/:movieId', (req, res) => {
     if (!error && response.statusCode == 200) {
       let movieDetails = JSON.parse(body);
       res.send(movieDetails)
+    }
+  })
+});
+
+app.get('/api/search/:movie', (req, res) => {
+  let movie = req.params.movie;
+  let url = `${BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${movie}`;
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      let searchResults = JSON.parse(body).results;
+      res.send(searchResults)
     }
   })
 });

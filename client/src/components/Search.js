@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import {
+  movieSearch,
+  updateAppState,
+} from '../stores/actionCreators';
 
 class Search extends Component {
 
@@ -21,7 +25,8 @@ class Search extends Component {
   }
 
   onSearchClick = () => {
-
+    this.props.movieSearch(this.state.searchInputValue);
+    this.props.updateAppState('search-results')
   }
 
   handleKeyPress = (e) => {
@@ -87,6 +92,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  movieSearch: (str) => dispatch(movieSearch(str)),
+  updateAppState: (appState) => dispatch(updateAppState(appState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

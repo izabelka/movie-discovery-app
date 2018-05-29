@@ -25,13 +25,17 @@ class Movie extends Component {
     return (
       <Wrapper
         onClick={this.onMovieClick}>
-        <PositionMarker>
-          <Position>
-            {position}
-          </Position>
-        </PositionMarker>
-        <Poster
-          src={`http://image.tmdb.org/t/p/w342//${posterPath}`} />
+        {position &&
+          <PositionMarker>
+            <Position>
+              {position}
+            </Position>
+          </PositionMarker>
+        }
+        {posterPath &&
+          <Poster
+            src={`http://image.tmdb.org/t/p/w342//${posterPath}`} />
+          }
         <MovieInfo>
           <Title>
             {title}

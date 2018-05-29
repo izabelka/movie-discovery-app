@@ -3,61 +3,31 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import '../assets/css/reset.css';
 import '../assets/css/styles.css';
-import {
-  getPopularMovies,
-} from '../stores/actionCreators';
-import Movie from './Movie';
+import PopularMovies from './PopularMovies';
 import MovieDetails from './MovieDetails';
-import Search from './Search';
+import SearchResults from './SearchResults';
 
 class App extends Component {
-
-  componentWillMount = () => {
-    this.props.getPopularMovies();
-  }
 
   renderContent = () => {
     switch (this.props.appState) {
       case 'initial':
       return (
-        <MoviesWrapper>
-          <Search />
-          <Header>
-            {'Popular Movies'}
-          </Header>
-          {this.renderMovies()}
-        </MoviesWrapper>
+        <PopularMovies />
       );
       case 'movie-details':
         return (
           <MovieDetails />
         );
+      case 'search-results':
+        return (
+          <SearchResults />
+        );
       default:
         return (
-          <MoviesWrapper>
-            <Search />
-            <Header>
-              {'Popular Movies'}
-            </Header>
-            {this.renderMovies()}
-          </MoviesWrapper>
+          <PopularMovies />
         );
     }
-  }
-
-  renderMovies = () => {
-    return (
-      this.props.popularMovies.map((movie, index) => (
-        <Movie
-          key={movie.id}
-          movieId={movie.id}
-          title={movie.title}
-          voteAverage={movie.vote_average}
-          posterPath={movie.poster_path}
-          overview={movie.overview}
-          position={index+1} />
-      ))
-    );
   }
 
   render() {
@@ -78,29 +48,11 @@ const Wrapper = styled.div`
   color: #fff;
 `;
 
-const Header = styled.h1`
-  font-size: 2.2em;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin-bottom: 34px;
-`;
-
-const MoviesWrapper = styled.div`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
 const mapStateToProps = state => ({
-  //...state,
   appState: state.appState,
-  popularMovies: state.popularMovies,
 });
 
 const mapDispatchToProps = dispatch => ({
- getPopularMovies: () => dispatch(getPopularMovies()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
