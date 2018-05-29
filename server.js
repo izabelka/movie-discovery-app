@@ -7,10 +7,6 @@ const port = process.env.PORT || 5000;
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
 app.get('/api/popular-movies', (req, res) => {
   let url = `${BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}`;
   request(url, function (error, response, body) {
