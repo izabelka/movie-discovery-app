@@ -13,10 +13,10 @@ The assignment was to create a movie discovery web app using [The Movie Database
 ## About the app
 - This App was created using [Create React App](https://github.com/facebookincubator/create-react-app) and a [Node.js](https://nodejs.org) back-end API with [Express](https://expressjs.com) framework.
 - When first loaded, the app displays a list of the popular movies and a search bar.
-- When user search for a movie, a list of movies with matching title appears.
+- When user searches for a movie, a list of movies with matching title appears.
 - If user clicks on a movie, a page with movie details is displayed.
 
 ## What I could do better
 If I had more time I would make some changes to the app, such as:
 - Responsive views (currently not optimised for mobile, but it is easy to fix)
-- Test (currently there are no tests)
+- Tests (currently there are no tests)
