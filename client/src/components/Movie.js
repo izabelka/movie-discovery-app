@@ -4,11 +4,17 @@ import styled from 'styled-components';
 import {
   getMovieDetails,
   updateAppState,
+  setPrevAppState,
 } from '../stores/actionCreators';
 
 class Movie extends Component {
 
   onMovieClick = () => {
+    if (this.props.position) {
+      this.props.setPrevAppState('initial');
+    } else {
+      this.props.setPrevAppState('search-results');
+    }
     this.props.getMovieDetails(this.props.movieId);
     this.props.updateAppState('movie-details');
   }
@@ -119,11 +125,13 @@ const Description = styled.p`
 `;
 
 const mapStateToProps = state => ({
+  appState: state.appState,
 });
 
 const mapDispatchToProps = dispatch => ({
  getMovieDetails: (movieId) => dispatch(getMovieDetails(movieId)),
  updateAppState: (appState) => dispatch(updateAppState(appState)),
+ setPrevAppState: (appState) => dispatch(setPrevAppState(appState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

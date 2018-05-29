@@ -3,6 +3,7 @@ import {
   UPDATE_APP_STATE,
   SELECT_MOVIE,
   SEARCH_MOVIES,
+  SET_PREV_APP_STATE,
 } from './actionTypes';
 
 export default (state = {}, action) => {
@@ -26,6 +27,11 @@ export default (state = {}, action) => {
     return {
       ...state,
       movieSearchResults: action.movieSearchResults,
+    }
+  case SET_PREV_APP_STATE:
+    return {
+      ...state,
+      prevAppState: action.prevAppState,
     }
   default:
    return state

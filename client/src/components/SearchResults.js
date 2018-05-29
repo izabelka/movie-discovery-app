@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Movie from './Movie';
 import Search from './Search';
+import {
+  updateAppState,
+} from '../stores/actionCreators';
 
 class SearchResults extends Component {
+
+  componentDidMount = () => {
+    window.history.pushState(null, null, '');
+    window.onpopstate = (event) => {
+      this.props.updateAppState('initial')
+    };
+  }
 
   renderMovies = () => {
     return (
@@ -64,6 +74,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  updateAppState: (appState) => dispatch(updateAppState(appState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

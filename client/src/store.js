@@ -9,6 +9,8 @@ export default function configureStore(initialState={}) {
     appState: 'initial',
     popularMovies: [],
     selectedMovie: null,
+    searchResults: [],
+    prevAppState: '',
   },
   applyMiddleware(thunk)
  );

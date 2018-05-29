@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import {
+  updateAppState,
+} from '../stores/actionCreators';
 
 class MovieDetails extends Component {
 
@@ -14,7 +17,13 @@ class MovieDetails extends Component {
 
   componentWillMount = () => {
     this.setMovie(this.props);
-    window.history.pushState("", document.title, window.location.pathname + window.location.search);
+  }
+
+  componentDidMount = () => {
+    window.history.pushState(null, null, '');
+    window.onpopstate = (event) => {
+      this.props.updateAppState(this.props.prevAppState)
+    };
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -35,6 +44,7 @@ class MovieDetails extends Component {
       overview,
       poster_path: posterPath,
       genres,
+      release_date: releaseDate,
     } = this.state.movie ? this.state.movie : '';
     return (
       <Wrapper>
@@ -62,6 +72,17 @@ class MovieDetails extends Component {
           <Description>
             {overview}
           </Description>
+          {releaseDate &&
+            <ReleaseDate>
+              {`Release Date: ${releaseDate}`}
+            </ReleaseDate>
+          }
+          {homepage &&
+            <MovieHomepage
+              href={homepage}>
+              {'Movie homepage'}
+            </MovieHomepage>
+          }
         </TextWrapper>
       </Wrapper>
     );
@@ -99,6 +120,11 @@ const Tagline = styled.h2`
   margin-bottom: 1.6em;
 `;
 
+const ReleaseDate = styled.p`
+  font-size: 1.2em;
+  margin-bottom: 1.4em;
+`;
+
 const GenresWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -115,13 +141,25 @@ const Genre = styled.span`
 const Description = styled.p`
   font-size: 1.2em;
   line-height: 1.3em;
+  margin-bottom: 2em;
+`;
+
+const MovieHomepage = styled.a`
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  &:visited {
+    color: #aaa;
+  }
 `;
 
 const mapStateToProps = state => ({
   movieDetails: state.selectedMovie,
+  prevAppState: state.prevAppState,
 });
 
 const mapDispatchToProps = dispatch => ({
+  updateAppState: (appState) => dispatch(updateAppState(appState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

@@ -3,6 +3,7 @@ import {
   UPDATE_APP_STATE,
   SELECT_MOVIE,
   SEARCH_MOVIES,
+  SET_PREV_APP_STATE,
 } from './actionTypes';
 import {
   apiGetPopularMovies,
@@ -59,5 +60,12 @@ export const setSearchResults = (results) => {
   return {
     type: SEARCH_MOVIES,
     movieSearchResults: results,
+  };
+}
+
+export const setPrevAppState = (appState) => {
+  return {
+    type: SET_PREV_APP_STATE,
+    prevAppState: appState,
   };
 }
