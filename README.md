@@ -1,6 +1,7 @@
 My solution for a coding challenge.
 The assignment was to create a movie discovery web app using [The Movie Database API](https://developers.themoviedb.org/3).
 
+
 ## How to run the app
 1. Clone this repository
 2. Add the `TMDB_API_KEY` constant to `.env` file. If there is no `.env` file in the main directory, you should create one. The content of file should look like: ```TMDB_API_KEY=${your_tmdb_api_key}```
