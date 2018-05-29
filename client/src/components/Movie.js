@@ -56,7 +56,6 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   border: 1px solid #c8d1dc;
   border-radius: 4px;
-  color: #fff;
   position: relative;
   cursor: pointer;
 

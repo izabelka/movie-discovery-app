@@ -8,6 +8,7 @@ import {
 } from '../stores/actionCreators';
 import Movie from './Movie';
 import MovieDetails from './MovieDetails';
+import Search from './Search';
 
 class App extends Component {
 
@@ -20,6 +21,10 @@ class App extends Component {
       case 'initial':
       return (
         <MoviesWrapper>
+          <Search />
+          <Header>
+            {'Popular Movies'}
+          </Header>
           {this.renderMovies()}
         </MoviesWrapper>
       );
@@ -30,6 +35,10 @@ class App extends Component {
       default:
         return (
           <MoviesWrapper>
+            <Search />
+            <Header>
+              {'Popular Movies'}
+            </Header>
             {this.renderMovies()}
           </MoviesWrapper>
         );
@@ -66,6 +75,14 @@ const Wrapper = styled.div`
   justify-content: center;
   width: calc(100vw - 2 * 34px);
   padding: 60px 34px;
+  color: #fff;
+`;
+
+const Header = styled.h1`
+  font-size: 2.2em;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 34px;
 `;
 
 const MoviesWrapper = styled.div`

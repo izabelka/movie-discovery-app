@@ -14,6 +14,7 @@ class MovieDetails extends Component {
 
   componentWillMount = () => {
     this.setMovie(this.props);
+    window.history.pushState("", document.title, window.location.pathname + window.location.search);
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -73,7 +74,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  color: #fff;
 `;
 
 const Poster = styled.img`
@@ -113,7 +113,8 @@ const Genre = styled.span`
 `;
 
 const Description = styled.p`
-
+  font-size: 1.2em;
+  line-height: 1.3em;
 `;
 
 const mapStateToProps = state => ({
