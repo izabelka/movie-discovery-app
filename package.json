@@ -8,11 +8,18 @@
   },
   "dependencies": {
     "dotenv": "^5.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
     "express": "^4.16.2",
     "nodemon": "^1.17.5",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "request": "^2.87.0"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1"
   }
 }

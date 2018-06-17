@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie should render correctly 1`] = `
+<Connect(Movie)
+  key="mockKey"
+  movieId="mockMovieId"
+  overview="mockOverview"
+  position="mockPosition"
+  posterPath="mockPosterPath"
+  title="mockTitle"
+  voteAverage="mockVoteAverage"
+/>
+`;
