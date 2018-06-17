@@ -18,5 +18,5 @@ The assignment was to create a movie discovery web app using [The Movie Database
 - If user clicks on a movie, a page with movie details is displayed.
 
 ## Tests
-I add a couple of simple test. To test the app, run:
+I added a couple of simple test. To test the app, run:
 `npm test` in the `client` directory.
