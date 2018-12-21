@@ -21,11 +21,7 @@ class SearchResults extends Component {
       this.props.searchResults.map((movie) => (
         <Movie
           key={movie.id}
-          movieId={movie.id}
-          title={movie.title}
-          voteAverage={movie.vote_average}
-          posterPath={movie.poster_path}
-          overview={movie.overview} />
+          movie={movie} />
       ))
     );
   }

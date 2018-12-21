@@ -18,12 +18,8 @@ class PopularMovies extends Component {
       this.props.popularMovies.map((movie, index) => (
         <Movie
           key={movie.id}
-          movieId={movie.id}
-          title={movie.title}
-          voteAverage={movie.vote_average}
-          posterPath={movie.poster_path}
-          overview={movie.overview}
-          position={index+1} />
+          movie={movie}
+          position={index + 1}/>
       ))
     );
   }

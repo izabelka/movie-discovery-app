@@ -22,11 +22,11 @@ class Movie extends Component {
   render() {
     let {
       title,
-      posterPath,
-      voteAverage,
+      poster_path: posterPath,
+      vote_average: voteAverage,
       overview,
-      position,
-    } = this.props;
+    } = this.props.movie;
+    let position = this.props.position;
     overview = overview.length > 300 ? overview.slice(0, 300) + '…' : overview;
     return (
       <Wrapper
