@@ -1,5 +1,4 @@
-My solution for a coding challenge.
-The assignment was to create a movie discovery web app using [The Movie Database API](https://developers.themoviedb.org/3).
+Movie discovery web app that uses [The Movie Database API](https://developers.themoviedb.org/3).
 
 
 ## How to run the app
